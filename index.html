@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aero - Weather Data Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glass-bg"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <h1>Aero<span>Weather</span></h1>
+            </div>
+            <div class="api-key-container">
+                <input type="password" id="api-key-input" placeholder="Enter OpenWeather API Key" />
+                <span class="tooltip" title="Provide an API key to fetch real data. Without it, mock data is used for testing.">?</span>
+            </div>
+        </header>
+
+        <!-- Main Content Grid -->
+        <main class="dashboard">
+            
+            <!-- Left Column: Search & Current Weather -->
+            <section class="weather-panel glass-panel">
+                <div class="search-box">
+                    <input type="text" id="city-input" placeholder="Search for a city..." autocomplete="off">
+                    <button id="search-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                </div>
+                
+                <div id="weather-display" class="weather-display hidden">
+                    <h2 id="city-name">City Name</h2>
+                    <div class="temp-big">
+                        <span id="current-temp">--</span>°C
+                    </div>
+                    <div class="weather-desc" id="weather-description">Description</div>
+                    
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Humidity</span>
+                            <span class="detail-val" id="current-humidity">--%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Wind</span>
+                            <span class="detail-val" id="current-wind">-- m/s</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="loading" class="loading hidden">Fetching...</div>
+                <div id="error-msg" class="error hidden"></div>
+            </section>
+
+            <!-- Right Column: BST Analysis -->
+            <section class="analysis-panel glass-panel">
+                <div class="panel-header">
+                    <h2>Insights Dashboard</h2>
+                    <p class="subtitle">Powered by Binary Search Tree Analysis</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-label">Highest Recorded</span>
+                        <div class="stat-value" id="max-temp-val">--°C</div>
+                        <div class="stat-sub" id="max-temp-city">--</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Lowest Recorded</span>
+                        <div class="stat-value" id="min-temp-val">--°C</div>
+                        <div class="stat-sub" id="min-temp-city">--</div>
+                    </div>
+                </div>
+
+                <div class="history-section">
+                    <h3>Temperature Log (Sorted)</h3>
+                    <ul id="history-log" class="history-list">
+                        <li class="empty-state">No data recorded yet. Search for a city to begin.</li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="bst.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
